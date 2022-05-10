@@ -5,7 +5,7 @@ import { Container, Col, Row } from "react-bootstrap"
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Header category1={"Cervezas"} category2={"Vinos"}/>
       <main className="main-content">
         <Container>
           <Row className="my-5">
