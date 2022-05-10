@@ -1,16 +1,18 @@
+import React from "react"
 import { Navbar, Container, Nav } from "react-bootstrap"
 import BottomNav from "../BottomNav/BottomNavs.js"
 import CartIcon from "../CartIcon/CartIcon.js"
 export default function Header({ category1, category2 }) {
-    const handleClick = () => {
-        alert("Este boton fue clickeado")
+    const [text, setText] = React.useState("Estos son nuestros productos disponibles")
+    const [count, setCount] = React.useState(0)
+
+    const handleRest = () => {
+        console.log("Ejecuto funcion")
+        if(count > 0) {
+            setCount( count - 1)
+        }
     }
-    const Button = ({ texto }) => {
-        console.log(texto)
-        return (
-            <input type="button" value={texto} onClick={handleClick} />
-        )
-    }
+
     return (
         <>
             <Navbar bg="light" variant="lightblue">
@@ -25,6 +27,11 @@ export default function Header({ category1, category2 }) {
                 <CartIcon count={5} />
             </Navbar>
             <BottomNav />
+            {text}
+            <input type="button" value="Cambiar" onClick={() => setText("Texto cambiado")}/>
+            <input type="button" value="+" onClick={() => setCount(count + 1)}/>
+            {count}
+            <input type="button" value="-" onClick={handleRest}/>
         </>
     );
 }
